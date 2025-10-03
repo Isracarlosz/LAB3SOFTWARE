@@ -68,8 +68,7 @@ mkdir -p app/{models,repositories,services,controllers,templates,static/css}
 # Pasos para instalar y ejecutar la aplicación
 # Abrimos powerShell como administrador
 # 1.clonamos en la carpeta que tengamos, supongamos ICC/sem07
-git clone [[https://github.com/ticket267speedy/laboratorio3Cognitive.git](https://github.com/Isracarlosz/LAB3SOFTWARE.git
-)
+git clone [https://github.com/Isracarlosz/LAB3SOFTWARE.git)]
 
 # 2. Creamos el entorno virtual
 python -m venv env

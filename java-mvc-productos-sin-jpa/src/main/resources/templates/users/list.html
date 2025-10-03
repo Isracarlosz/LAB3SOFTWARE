@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('Usuarios List')">
+    <title>Usuarios List</title>
+</head>
+<body>
+<nav th:replace="fragments/layout :: navbar"></nav>
+
+<div class="container mt-4">
+    <h2>Lista de Usuarios</h2>
+
+    <div class="alert alert-success" th:if="${message}" th:text="${message}"></div>
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+
+    <a th:href="@{/users/new}" class="btn btn-primary mb-3">Agregar Nuevo Usuario</a>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.nombre}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.rol}"></td>
+                <td>
+                    <a th:href="@{/users/view/{id}(id=${user.id})}" class="btn btn-info btn-sm">Ver</a>
+                    <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Seguro que deseas eliminar este usuario?')">Eliminar</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(users)}">
+                <td colspan="5" class="text-center">No se encontraron usuarios</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>

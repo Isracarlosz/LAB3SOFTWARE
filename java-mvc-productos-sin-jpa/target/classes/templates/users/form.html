@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head(${user.id == null ? 'Create User' : 'Edit User'})">
+    <title>User Form</title>
+</head>
+<body>
+<nav th:replace="fragments/layout :: navbar"></nav>
+
+<div class="container mt-4">
+    <h2 th:text="${user.id == null ? 'Create New User' : 'Edit User'}">User Form</h2>
+
+    <!-- Formulario para crear nuevo usuario -->
+    <form th:if="${user.id == null}" th:action="@{/users}" th:object="${user}" method="post">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}" required>
+        </div>
+        <div class="mb-3">
+            <label for="rol" class="form-label">Rol</label>
+            <select class="form-select" id="rol" th:field="*{rol}" required>
+                <option value="">-- Seleccione rol --</option>
+                <option value="admin">Admin</option>
+                <option value="usuario">Usuario</option>
+            </select>
+        </div>
+        <!-- Campo de contraseña eliminado -->
+        <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+        <a th:href="@{/users}" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+    <!-- Formulario para actualizar usuario -->
+    <form th:if="${user.id != null}" th:action="@{/users/update}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}" required>
+        </div>
+        <div class="mb-3">
+            <label for="rol" class="form-label">Rol</label>
+            <select class="form-select" id="rol" th:field="*{rol}" required>
+                <option value="">-- Seleccione rol --</option>
+                <option value="admin">Admin</option>
+                <option value="usuario">Usuario</option>
+            </select>
+        </div>
+        <!-- Campo de contraseña eliminado en edición -->
+        <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+        <a th:href="@{/users}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>

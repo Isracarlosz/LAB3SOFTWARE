@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('View User')">
+    <title>View User</title>
+</head>
+<body>
+<nav th:replace="fragments/layout :: navbar"></nav>
+
+<div class="container mt-4">
+    <h2>Detalles del Usuario</h2>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 th:text="${user.nombre}">User Name</h3>
+        </div>
+        <div class="card-body">
+            <p class="card-text"><strong>ID:</strong> <span th:text="${user.id}"></span></p>
+            <p class="card-text"><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+            <p class="card-text"><strong>Rol:</strong> <span th:text="${user.rol}"></span></p>
+        </div>
+        <div class="card-footer">
+            <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-warning">Editar</a>
+            <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger"
+               onclick="return confirm('¿Seguro que deseas eliminar este usuario?')">Eliminar</a>
+            <a th:href="@{/users}" class="btn btn-secondary">Volver al listado</a>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>

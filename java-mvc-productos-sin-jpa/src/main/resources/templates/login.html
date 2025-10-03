@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('Login')">
+    <title>Login</title>
+</head>
+<body>
+<nav th:replace="fragments/layout :: navbar"></nav>
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="mb-4 text-center">Iniciar Sesión</h2>
+
+    <!-- Mensaje de error si login falla -->
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+    <!-- Mensaje de éxito si logout -->
+    <div class="alert alert-success" th:if="${message}" th:text="${message}"></div>
+
+    <!-- Formulario de login -->
+    <form th:action="@{/login}" th:object="${user}" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="email"
+                   th:field="*{email}" placeholder="Ingresa tu email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password"
+                   th:field="*{password}" placeholder="Ingresa tu contraseña" required>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </div>
+    </form>
+</div>
+
+<footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>

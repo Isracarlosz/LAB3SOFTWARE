@@ -1,33 +1,44 @@
-java-mvc-productos/
+java-mvc-productos-sin-jpa
 │
+├── .idea/                    
 ├── .mvn/
 ├── src/
 │   ├── main/
 │   │   ├── java/
-│   │   │   └── com/demo/productos/
+│   │   │   └── com/demo/productmanagement/
 │   │   │       ├── controller/
-│   │   │       │   └── UsuarioController.java
+│   │   │       │   ├── LoginController.java   
+│   │   │       │   └── UserController.java     
 │   │   │       ├── model/
-│   │   │       │   └── Usuario.java
+│   │   │       │   └── User.java
 │   │   │       ├── repository/
-│   │   │       │   └── UsuarioRepository.java
+│   │   │       │   └── UserRepository.java
 │   │   │       ├── service/
-│   │   │       │   ├── UsuarioService.java
-│   │   │       │   └── UsuarioServiceImpl.java
-│   │   │       └── MvcProductosApplication.java
+│   │   │       │   ├── UserService.java
+│   │   │       │   └── UserServiceImpl.java
+│   │   │       └── MvcCrudProductosSinJpaApplication.java 
 │   │   │
 │   │   └── resources/
 │   │       ├── static/
+│   │       │   └── css/                       
+│   │       │       └── static.css             
 │   │       ├── templates/
-│   │       │   └── laboTres/
-│   │       │       ├── login.html
-│   │       │       ├── listar-usuarios.html
-│   │       │       ├── crear-usuario.html
-│   │       │       └── editar-usuario.html
-│   │       └── application.properties
+│   │       │   ├── fragments/
+│   │       │   │   └── layout.html
+│   │       │   └── users/
+│   │       │       ├── form.html
+│   │       │       ├── index.html
+│   │       │       ├── list.html
+│   │       │       └── view.html
+│   │       ├── application.properties
+│   │       └── schema.sql                     
 │   │
 │   └── test/
 │
-├── db.sql                      # Script para crear y poblar la base de datos
-├── pom.xml                     # Dependencias y configuración de Maven
-└── README.md                   # Este archivo
+├── target/                     
+├── .gitattributes
+├── .gitignore
+├── mvnw
+├── mvnw.cmd
+├── pom.xml                     # Dependencies and Maven configuration
+└── README.md                   # Project documentation
